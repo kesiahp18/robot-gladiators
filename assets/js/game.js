@@ -52,17 +52,15 @@ var fight = function(enemyName) {
         // remove player's health by subtracting the amount set in the enemyAttack variable
         playerHealth = playerHealth - enemyAttack;
         console.log(
-        enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
-    );
+        enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining.");
+        window.alert(playerName + " has " + playerHealth + " health left.");
+    
 
   // check player's health
   if (playerHealth <= 0) {
-    window.alert(playerName + " has died!");
+    window.alert("You have lost your Robot in battle! Game Over!");
     break;
-  } else {
-    window.alert(playerName + " still has " + playerHealth + " health left.");
-  }
-
+    } 
 }
 }
 };
@@ -72,8 +70,15 @@ var fight = function(enemyName) {
 // * Fight all enemy robots
 
 for(var i = 0; i < enemyNames.length; i++) {
+    if (playerHealth > 0) {
+        window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
+    }
+    //pick enemy to fight
     var pickedEnemyName = enemyNames[i];
+    //reset enemy health before starting a new fight
     enemyHealth = 50;
+    //use debugger to pause script when needed
+    //debugger;
     fight(pickedEnemyName);
 }
 
